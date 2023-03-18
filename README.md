@@ -11,3 +11,5 @@ I'm an admin of many Slack workspaces and frequently need to reinvite people man
 2. Run `npm install`
 3. Copy the contents of `.cypress.env.json.sample` to another file named `.cypress.env.json` and update the required variables to your specific workspace
 4. Run `npm start`
+5. A Cypress window will open up where you can select E2E testing, then select the browser of your choice
+6. Select the spec file named `reinvite.spec.js` and Cypress will start running the automation in the browser
