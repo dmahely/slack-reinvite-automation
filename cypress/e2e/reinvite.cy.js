@@ -1,5 +1,11 @@
 describe('slack reinvite', () => {
     it('passes', () => {
+
+        // set a huge viewport to be able to see the full list
+        // otherwise, cypress will only get the first 10 or so
+        // users which are visible in the viewport
+        cy.viewport(3000, 3000)
+
         // sign into Slack workspace as an admin
         cy.visit(Cypress.env('SLACK_WORKSPACE_URL'))
         cy.contains('sign in with a password instead').click()
@@ -10,7 +16,7 @@ describe('slack reinvite', () => {
 
         // use filter to get list of invited users
         cy.get('button').contains('Filter').click()
-        cy.get('.c-label.c-label--inline.c-label--pointer.c-label--with_formatted_text').contains('Invited').click()
+        cy.get('.c-label').contains('Invited').click()
         cy.get('button').contains('Filter').click({ force: true })
         cy.wait(3000)
 
@@ -18,9 +24,8 @@ describe('slack reinvite', () => {
         cy.get('.c-action_buttons__button').each(($el) => {
             cy.wrap($el).click()
             cy.contains('Resend invitation').click()
-            cy.wait(1000)
             cy.contains('Resend Invitation').click()
-            cy.wait(3000)
+            cy.wait(2000)
         })
     })
 })
