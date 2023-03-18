@@ -1,0 +1,17 @@
+{
+  "name": "slack-reinvite-automation",
+  "version": "1.0.0",
+  "description": "A cypress automation to resend invitations to invited members of a Slack workspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slack",
+    "cypress",
+    "automation",
+    "invite"
+  ],
+  "author": "Doaa Mahely",
+  "license": "ISC"
+}
