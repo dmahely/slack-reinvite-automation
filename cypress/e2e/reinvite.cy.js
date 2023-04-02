@@ -23,9 +23,15 @@ describe('slack reinvite', () => {
         // loop over invited users and resend invites
         cy.get('.c-action_buttons__button').each(($el) => {
             cy.wrap($el).click()
-            cy.contains('Resend invitation').click()
-            cy.contains('Resend Invitation').click()
-            cy.wait(2000)
+            cy.get('.c-menu__items').then(($menu) => {
+                if ($menu.text().includes('Activate account')) {
+                    cy.wrap($el).click({ force: true })
+                } else {
+                    cy.contains('Resend invitation').click()
+                    cy.contains('Resend Invitation').click()
+                }
+                cy.wait(2000)
+            })
         })
     })
 })
